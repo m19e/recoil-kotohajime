@@ -22,6 +22,9 @@ export default function TodoList() {
     );
 }
 
+let id = 0;
+const getId = () => id++;
+
 const TodoItemCreator = () => {
     const [inputValue, setInputValue] = useState("");
     const setTodoList = useSetRecoilState(todoListState);
@@ -51,6 +54,3 @@ const TodoItemCreator = () => {
         </div>
     );
 };
-
-let id = 0;
-const getId = () => id++;
