@@ -24,7 +24,7 @@ const TextInput = () => {
 
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "3rem" }}>
-            <div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
+            <div style={{ display: "flex", flexDirection: "column", width: "50%", color: "white" }}>
                 <input type="text" value={text} onChange={handleChange} style={{ fontSize: "3rem" }} />
                 Echo: {text}
             </div>
