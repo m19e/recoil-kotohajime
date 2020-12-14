@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { atom, useSetRecoilState, useRecoilValue } from "recoil";
 
-type TodoItem = {
+type TodoItemType = {
     id: number;
     text: string;
     done: boolean;
 };
 
-const todoListState = atom<TodoItem[]>({
+const todoListState = atom<TodoItemType[]>({
     key: "todoListState",
     default: [],
 });
