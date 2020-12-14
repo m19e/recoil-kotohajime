@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { atom, useSetRecoilState, useRecoilValue } from "recoil";
+import { atom, useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
 
 type TodoItemType = {
     id: number;
@@ -16,9 +16,18 @@ export default function TodoList() {
     const todoList = useRecoilValue(todoListState);
 
     return (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <TodoItemCreator />
-        </div>
+        <>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <TodoItemCreator />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
+                    {todoList.map((todo) => (
+                        <TodoItem item={todo} />
+                    ))}
+                </div>
+            </div>
+        </>
     );
 }
 
@@ -50,6 +59,54 @@ const TodoItemCreator = () => {
             <input type="text" value={inputValue} onChange={handleChange} style={{ fontSize: "3rem" }} />
             <button onClick={addItem} style={{ fontSize: "3rem", color: "gray" }}>
                 Add
+            </button>
+        </div>
+    );
+};
+
+type TodoItemProps = {
+    item: TodoItemType;
+};
+
+const replaceItemAtIndex = (arr: any[], index: number, newValue: any) => {
+    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+};
+
+const removeItemAtIndex = (arr: any[], index: number) => {
+    return [...arr.slice(0, index), ...arr.slice(index + 1)];
+};
+
+const TodoItem = ({ item }: TodoItemProps) => {
+    const [todoList, setTodoList] = useRecoilState(todoListState);
+    const index = todoList.findIndex((listItem) => listItem === item);
+
+    const editItemText = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+        const newList = replaceItemAtIndex(todoList, index, {
+            ...item,
+            text: value,
+        });
+        setTodoList(newList);
+    };
+
+    const toggleItemDone = () => {
+        const newList = replaceItemAtIndex(todoList, index, {
+            ...item,
+            done: !item.done,
+        });
+        setTodoList(newList);
+    };
+
+    const deleteItem = () => {
+        const newList = removeItemAtIndex(todoList, index);
+        setTodoList(newList);
+    };
+
+    return (
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: "16px" }}>
+            <input type="checkbox" checked={item.done} onChange={toggleItemDone} />
+            <input type="text" value={item.text} onChange={editItemText} style={{ fontSize: "2rem", color: "gray" }} />
+            <button onClick={deleteItem} style={{ fontSize: "2rem", color: "gray" }}>
+                X
             </button>
         </div>
     );
