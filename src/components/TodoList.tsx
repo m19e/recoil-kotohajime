@@ -37,7 +37,7 @@ const filteredTodoListState = selector<TodoItemType[]>({
 });
 
 export default function TodoList() {
-    const todoList = useRecoilValue(todoListState);
+    const todoList = useRecoilValue(filteredTodoListState);
 
     return (
         <>
