@@ -42,10 +42,10 @@ export default function TodoList() {
     return (
         <>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <TodoListFilters />
-            </div>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <TodoItemCreator />
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                    <TodoListFilters />
+                    <TodoItemCreator />
+                </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div style={{ display: "flex", flexDirection: "column", width: "30%" }}>
@@ -66,14 +66,14 @@ const TodoListFilters = () => {
     };
 
     return (
-        <>
+        <div style={{ fontSize: "2rem" }}>
             Filter:
-            <select value={filter} onChange={updateFilter}>
+            <select value={filter} onChange={updateFilter} style={{ fontSize: "2rem" }}>
                 <option value="all">All</option>
                 <option value="done">Done</option>
                 <option value="notyet">Not yet</option>
             </select>
-        </>
+        </div>
     );
 };
 
