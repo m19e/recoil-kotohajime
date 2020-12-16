@@ -107,11 +107,11 @@ const TodoListStats = () => {
     const formattedPercentDone = Math.round(percentDone * 100);
 
     return (
-        <div style={{ display: "flex" }}>
-            <p>TotalItems: {totalNum}</p>
-            <p>ItemsDone: {totalDoneNum}</p>
-            <p>ItemsNotyet: {totalNotyetNum}</p>
-            <p>PercentDone: {formattedPercentDone}</p>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>TotalItems: {totalNum}</p>
+            <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>ItemsDone: {totalDoneNum}</p>
+            <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>ItemsNotyet: {totalNotyetNum}</p>
+            <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>PercentDone: {formattedPercentDone}</p>
         </div>
     );
 };
