@@ -102,6 +102,20 @@ const TodoListFilters = () => {
     );
 };
 
+const TodoListStats = () => {
+    const { totalNum, totalDoneNum, totalNotyetNum, percentDone } = useRecoilValue(todoListStatsState);
+    const formattedPercentDone = Math.round(percentDone * 100);
+
+    return (
+        <div style={{ display: "flex" }}>
+            <p>TotalItems: {totalNum}</p>
+            <p>ItemsDone: {totalDoneNum}</p>
+            <p>ItemsNotyet: {totalNotyetNum}</p>
+            <p>PercentDone: {formattedPercentDone}</p>
+        </div>
+    );
+};
+
 let id = 0;
 const getId = () => id++;
 
