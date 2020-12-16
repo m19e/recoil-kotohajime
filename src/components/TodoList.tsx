@@ -12,6 +12,13 @@ const todoListState = atom<TodoItemType[]>({
     default: [],
 });
 
+type TodoListFilter = "all" | "done" | "notyet";
+
+const todoListFilterState = atom<TodoListFilter>({
+    key: "todoListFilterState",
+    default: "all",
+});
+
 export default function TodoList() {
     const todoList = useRecoilValue(todoListState);
 
