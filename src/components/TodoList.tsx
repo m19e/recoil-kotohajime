@@ -111,7 +111,7 @@ const TodoListStats = () => {
             <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>TotalItems: {totalNum}</p>
             <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>ItemsDone: {totalDoneNum}</p>
             <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>ItemsNotyet: {totalNotyetNum}</p>
-            <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>PercentDone: {formattedPercentDone}</p>
+            <p style={{ padding: "0 4px", fontSize: "1.5rem" }}>PercentDone: {formattedPercentDone}%</p>
         </div>
     );
 };
