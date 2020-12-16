@@ -43,6 +43,24 @@ type TodoListStats = {
     percentDone: number;
 };
 
+const todoListStatsState = selector<TodoListStats>({
+    key: "todoListStatsState",
+    get: ({ get }) => {
+        const list = get(todoListState);
+        const totalNum = list.length;
+        const totalDoneNum = list.filter((i) => i.done).length;
+        const totalNotyetNum = totalNum - totalDoneNum;
+        const percentDone = totalNum === 0 ? 0 : totalDoneNum / totalNum;
+
+        return {
+            totalNum,
+            totalDoneNum,
+            totalNotyetNum,
+            percentDone,
+        };
+    },
+});
+
 export default function TodoList() {
     const todoList = useRecoilValue(filteredTodoListState);
 
