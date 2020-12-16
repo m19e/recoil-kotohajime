@@ -36,6 +36,13 @@ const filteredTodoListState = selector<TodoItemType[]>({
     },
 });
 
+type TodoListStats = {
+    totalNum: number;
+    totalDoneNum: number;
+    totalNotyetNum: number;
+    percentDone: number;
+};
+
 export default function TodoList() {
     const todoList = useRecoilValue(filteredTodoListState);
 
