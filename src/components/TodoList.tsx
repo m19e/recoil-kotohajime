@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { atom, useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
+import { atom, useSetRecoilState, useRecoilValue, useRecoilState, selector } from "recoil";
 
 type TodoItemType = {
     id: number;
@@ -17,6 +17,23 @@ type TodoListFilter = "all" | "done" | "notyet";
 const todoListFilterState = atom<TodoListFilter>({
     key: "todoListFilterState",
     default: "all",
+});
+
+const filteredTodoListState = selector<TodoItemType[]>({
+    key: "filteredTodoListState",
+    get: ({ get }) => {
+        const filter = get(todoListFilterState);
+        const list = get(todoListState);
+
+        switch (filter) {
+            case "done":
+                return list.filter((item) => item.done);
+            case "notyet":
+                return list.filter((item) => !item.done);
+            default:
+                return list;
+        }
+    },
 });
 
 export default function TodoList() {
