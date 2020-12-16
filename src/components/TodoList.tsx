@@ -42,6 +42,9 @@ export default function TodoList() {
     return (
         <>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <TodoListFilters />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <TodoItemCreator />
             </div>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
