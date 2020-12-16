@@ -145,6 +145,7 @@ const TodoItemCreator = () => {
             <button onClick={addItem} style={{ fontSize: "3rem", color: "gray" }}>
                 Add
             </button>
+            <TodoListStats />
         </div>
     );
 };
