@@ -55,6 +55,25 @@ export default function TodoList() {
     );
 }
 
+const TodoListFilters = () => {
+    const [filter, setFilter] = useRecoilState(todoListFilterState);
+
+    const updateFilter = ({ target: { value } }: React.ChangeEvent<HTMLSelectElement>) => {
+        setFilter(value as TodoListFilter);
+    };
+
+    return (
+        <>
+            Filter:
+            <select value={filter} onChange={updateFilter}>
+                <option value="all">All</option>
+                <option value="done">Done</option>
+                <option value="notyet">Not yet</option>
+            </select>
+        </>
+    );
+};
+
 let id = 0;
 const getId = () => id++;
 
